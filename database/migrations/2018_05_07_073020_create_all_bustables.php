@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterAddressesTable extends Migration
+class CreateAllBustables  extends Migration
 {
     /**
      * Run the migrations.
@@ -37,7 +37,7 @@ class AlterAddressesTable extends Migration
             $table->integer('user_id')->nullable(false)->default(0)->comment('用户ID(关联用户表)');
             $table->string('consignee', 10)->nullable(false)->default('')->comment('收货人姓名');
             $table->string('tel', 13)->nullable(false)->default('')->comment('收货人电话号码');
-            $table->string('address', 255)->nullable(false)->default('')->comment('收货地址');
+            $table->string('address', 255)->nullable(false)->default('')->comment('具体的宿舍楼栋号');
             $table->tinyInteger('is_default')->default(0)->comment('是否是默认收获地址');
             $table->tinyInteger('deleted')->default(0)->comment("软删除标记");
             $table->timestamps();
@@ -54,7 +54,7 @@ class AlterAddressesTable extends Migration
         //站点名
         Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 30)->nullable(false)->comment('站点名');
+            $table->string('name', 30)->nullable(false)->comment('站点名(即起点)');
             $table->integer('school_id')->nullable(false)->comment('关联学校ID');
             $table->tinyInteger('deleted')->default(0)->comment("软删除标记");
             $table->timestamps();
@@ -70,37 +70,28 @@ class AlterAddressesTable extends Migration
             $table->string('address',50)->nullable(false)->comment('宿舍楼和房间号');
             $table->string('card_img',100)->nullable(false)->comment('证件图片地址');
             $table->string('card_number',100)->nullable(false)->comment('证件号码');
+            $table->integer('point')->nullable(true)->default(0)->comment('驾照积分');
             $table->tinyInteger('deleted')->default(0)->comment("软删除标记");
             $table->timestamps();
         });
 
-        //任务表
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->nullable(false)->comment('关联发布用户id');
-            $table->integer('school_id')->nullable(false)->comment('关联所在学校id');
-            $table->integer('site_id')->nullable(false)->comment('关联所在学校的站点id');
-            $table->integer('address_id')->nullable(false)->comment('用户收获地址的id');
-            $table->string('tel', 13)->nullable(false)->default('')->comment('联系号码');
-            $table->string('key_number', 13)->nullable(false)->default('')->comment('取货码');
-            $table->float('price')->nullable(false)->default(1.00)->comment('报酬');
-            $table->string('note',100)->nullable(false)->comment('任务备注');
-            $table->tinyInteger('status')->default(0)->comment('任务状态,0:可接,1:执行中,2:成功,4:失败');
-            $table->dateTime('start_time')->nullable(true)->comment('任务开始时间');
-            $table->dateTime('end_time')->nullable(false)->comment('任务截止时间');
-            $table->tinyInteger('deleted')->default(0)->comment("软删除标记");
-            $table->timestamps();
-        });
-
-        //老司机接单表
-        Schema::create('driver_tasks', function (Blueprint $table) {
+        //老司机发车表
+        Schema::create('bus', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('driver_id')->nullable(false)->comment('关联老司机id');
-            $table->integer('task_id')->nullable(false)->comment('关联任务id');
-            $table->tinyInteger('status')->default(0)->comment('任务状态,0:未完成,1:已完成');
+            $table->integer('school_id')->nullable(false)->comment('关联所在学校id');
+            $table->integer('site_id')->nullable(false)->comment('关联所在学校的站点id(即起点)');
+            $table->integer('address_id')->nullable(false)->comment('用户收获地址的id');
+            $table->float('price')->nullable(false)->default(1.00)->comment('票价');
+            $table->string('note',100)->nullable(false)->comment('备注(大件补差价等信息在此备注)');
+            $table->tinyInteger('status')->default(0)->comment('任务状态,0:未发车,1:发车中,2:已到站,3:全部确认');
+            $table->tinyInteger('count')->default(4)->comment('bus乘客数量(最大不能超过8)');
+            $table->dateTime('start_time')->nullable(true)->comment('发车时间');
+            $table->dateTime('end_time')->nullable(false)->comment('预计到站时间');
             $table->tinyInteger('deleted')->default(0)->comment("软删除标记");
             $table->timestamps();
         });
+
     }
 
     /**
@@ -116,7 +107,6 @@ class AlterAddressesTable extends Migration
         Schema::drop('schools');
         Schema::drop('sites');
         Schema::drop('drivers');
-        Schema::drop('tasks');
-        Schema::drop('driver_tasks');
+        Schema::drop('bus');
     }
 }
