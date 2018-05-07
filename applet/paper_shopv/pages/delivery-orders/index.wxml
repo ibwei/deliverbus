@@ -1,0 +1,44 @@
+<view class="container">
+    <view class="status-box">
+        <view bindtap="statusTap" class="status-label {{index == currentType ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+            {{item}}
+            <view class="{{tabClass[index]}}"></view>
+        </view>
+    </view>
+    <view class="no-order" hidden="{{orderList ? true : false}}">
+        <image src="/images/no-order.png" class="no-order-img"></image>
+        <view class="text">暂无订单</view>
+    </view>
+    <view class="order-list" hidden="{{orderList ? false : true}}">
+        <view class="a-order" wx:for-items="{{orderList}}" wx:key="{{index}}">
+            <view class="order-date">
+                <view class="goods-des goods-box" hidden="{{item.status==26? fslse : true}}">
+                  <view>姓名：{{item.userName}}</view>
+                  <view>{{item.userMobile}}</view>
+                  <view>宿舍：{{item.dormName}}</view>
+                </view>
+            </view>
+            <view class="goods-info" data-id="{{item.id}}">
+                <view class="goods-des">
+                  <view>订单号:{{item.orderNumber}} </view>
+                  <view wx:if="{{item.remark && item.remark != ''}}">备注： {{item.remark}}</view>
+                </view>
+            </view>
+            <view class="goods-info">
+                <scroll-view scroll-x="true">
+                  <view class="goods-des goods-box" wx:for-items="{{goodsMap[item.id]}}" wx:key="{{index}}">
+                    <view>{{item.name}}</view>
+                    <view>{{item.price}}</view>
+                    <view>X{{item.num}}</view>
+                  </view>
+                </scroll-view>
+            </view>
+            <view class="price-box">
+                <view class="total-price">合计：¥ {{item.amountReal}}</view>
+                <view class="btn confirm-btn" hidden="{{item.status==22? fslse : true}}" bindtap="toRecieveOrderTap"  data-id="{{item.id}}">确认接单</view>
+                <view class="btn confirm-btn" hidden="{{item.status==26? fslse : true}}" bindtap="toDeliveryOrderTap" data-id="{{item.id}}" data-money="{{item.amountReal}}">确认配送</view>        
+            </view>  
+        </view>
+
+    </view>
+</view>
