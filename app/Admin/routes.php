@@ -22,5 +22,7 @@ Route::group([
     $router->resource('driver', DriverController::class);
     //bus
     $router->resource('bus', BusController::class);
+    //车票
+    $router->resource('ticket', TicketController::class);
 
 });
