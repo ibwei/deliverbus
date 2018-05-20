@@ -58,7 +58,7 @@ class AddressesController extends Controller
             $grid->getUser()->nickname('用户名');
             $grid->consignee('收货人姓名');
             $grid->tel('电话');
-
+            $grid->getSchool()->name('学校');
             $grid->address('具体的宿舍楼栋号');
             $grid->is_default('是否是默认地址')->display(function ($is_default) {
                 return $is_default ? '是' : '否';
@@ -77,6 +77,7 @@ class AddressesController extends Controller
             $form->text('user_id', '用户id');
             $form->text('consignee', '收货人姓名');
             $form->text('tel', '电话');
+            $form->text('school_id', '学校id');
             $form->text('address','具体的宿舍楼栋号');
             $form->radio('is_default', '是否是默认地址')
                 ->options(['1'=>'是', '0'=>'否'])

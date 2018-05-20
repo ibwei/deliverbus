@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wxc-flex": "../../packages/wxc-flex/dist/index"
+  },
+  "navigationBarTitleText": "收货地址"
+}

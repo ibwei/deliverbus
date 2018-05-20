@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wxc-flex": "../../packages/wxc-flex/dist/index",
+    "wxc-button": "../../packages/wxc-button/dist/index",
+    "wxc-toast": "../../packages/wxc-toast/dist/index"
+  },
+  "navigationBarTitleText": "反馈给我们"
+}

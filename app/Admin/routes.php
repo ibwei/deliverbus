@@ -24,5 +24,7 @@ Route::group([
     $router->resource('bus', BusController::class);
     //车票
     $router->resource('ticket', TicketController::class);
+    //反馈
+    $router->resource('feelback', FeelbackController::class);
 
 });

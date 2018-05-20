@@ -1,0 +1,92 @@
+<wxc-notice notice="{{notice}}" color="#ffffff" bgColor="#19be6b" class="notice" scroll="{{true}}" show-icon="{{true}}" bind:close="onClose" close="{{true}}" _pid="{{_pid}}"></wxc-notice>
+<view class="container">
+    <wxc-flex class="wrap" _pid="{{_pid}}">
+        <view class="item side">* 学校</view>
+        <picker bindchange="bindPickerChange1" range-key="title" value="index" range="{{schoolList}}" disabled="{{schoolList.length?false:true}}">
+            <view class="picker" wx:if="{{!currentSchool.length}}">
+                <text class="notice-text" wx:if="{{schoolList[index].title}}">{{schoolList[index].title}}</text>
+                <text class="notice-text" wx:else="">{{currentSchool.title}}</text>
+            </view>
+        </picker>
+    </wxc-flex>
+    <wxc-flex class="wrap" _pid="{{_pid}}">
+        <view class="item side">* 起点站</view>
+        <picker bindchange="bindPickerChange2" value="index1" range-key="title" range="{{startSites}}" disabled="{{startSites.length?false:true}}">
+            <view class="picker" wx:if="{{school_id}}">
+                <text class="notice-text" wx:if="{{startSites[index1].title}}">{{startSites[index1].title}}</text>
+                <text class="notice-text" wx:else="">请选择站点</text>
+            </view>
+            <view wx:else="">
+                <text class="notice-text">请先选择学校</text>
+            </view>
+        </picker>
+    </wxc-flex>
+    <wxc-flex class="flex-list" _pid="{{_pid}}">
+        <item class="r-flex">
+            <wxc-input type="text" right="{{true}}" title="* 终点站" maxlength="12" icon="truck" placeholder="如清风苑、清风B)" mode="wrapped" class="myinput" value="{{end_site}}" bindblur="saveEndSite" _pid="{{_pid}}"></wxc-input>
+        </item>
+    </wxc-flex>
+    <wxc-flex class="flex-list" _pid="{{_pid}}">
+        <item class="r-flex">
+            <wxc-input type="text" right="{{true}}" title="* 线路名称" maxlength="12" icon="truck" placeholder="如顺丰专线、幸福快车" mode="wrapped" class="myinput" value="{{driver_line}}" bindblur="saveDriverLine" _pid="{{_pid}}"></wxc-input>
+        </item>
+    </wxc-flex>
+    <wxc-flex class="flex-list" _pid="{{_pid}}">
+        <item class="r-flex">
+            <wxc-input type="number" right="{{true}}" title="* 小件数量" maxlength="12" icon="truck" placeholder="请输入小件数量" mode="wrapped" class="myinput" value="{{small_count}}" bindblur="saveSmallCount" _pid="{{_pid}}"></wxc-input>
+        </item>
+    </wxc-flex>
+    <wxc-flex class="flex-list" _pid="{{_pid}}">
+        <item class="r-flex">
+            <wxc-input type="digit" right="{{true}}" title="* 小件价格" maxlength="12" icon="truck" placeholder="请输入小件价格" mode="wrapped" class="myinput" value="{{small_price}}" bindblur="saveSmallPrice" _pid="{{_pid}}"></wxc-input>
+        </item>
+    </wxc-flex>
+    <wxc-flex class="flex-list" _pid="{{_pid}}">
+        <item class="r-flex">
+            <wxc-input type="number" right="{{true}}" title="* 中件数量" maxlength="12" icon="truck" placeholder="请输入中件数量" mode="wrapped" class="myinput" value="{{normall_count}}" bindblur="saveNormallCount" _pid="{{_pid}}"></wxc-input>
+        </item>
+    </wxc-flex>
+    <wxc-flex class="flex-list" _pid="{{_pid}}">
+        <item class="r-flex">
+            <wxc-input type="digit" right="{{true}}" title="* 中件价格" maxlength="12" icon="truck" placeholder="请输入小件价格" mode="wrapped" class="myinput" value="{{normall_price}}" bindblur="saveNormallPrice" _pid="{{_pid}}"></wxc-input>
+        </item>
+    </wxc-flex>
+    <wxc-flex class="flex-list" _pid="{{_pid}}">
+        <item class="r-flex">
+            <wxc-input type="number" right="{{true}}" title="* 大件数量" maxlength="12" icon="truck" placeholder="请输入大件数量" mode="wrapped" class="myinput" value="{{big_count}}" bindblur="saveBigCount" _pid="{{_pid}}"></wxc-input>
+        </item>
+    </wxc-flex>
+    <wxc-flex class="flex-list" _pid="{{_pid}}">
+        <item class="r-flex">
+            <wxc-input type="digit" right="{{true}}" title="* 大件价格" maxlength="12" icon="truck" placeholder="请输入大件价格" mode="wrapped" class="myinput" value="{{big_price}}" bindblur="saveBigPrice" _pid="{{_pid}}"></wxc-input>
+        </item>
+    </wxc-flex>
+    <wxc-flex class="wrap" _pid="{{_pid}}">
+        <view class="item side">* 开始时间</view>
+        <picker mode="time" value="{{start_time}}" start="{{nowTime}}" end="24:00" bindchange="bindTimeChange" class="item main">
+            <text class="place-text" wx:if="{{!start_time}}">
+                请点击选择派件开始时间
+            </text>
+            <text class="place-text" wx:else="">
+                {{start_time}}
+            </text>
+        </picker>
+    </wxc-flex>
+    <wxc-flex class="wrap" _pid="{{_pid}}">
+        <view class="item side">* 结束时间</view>
+        <picker mode="time" value="{{end_time}}" start="{{nowTime}}" end="24:00" bindchange="bindEndTimeChange" class="item main">
+            <text class="place-text" wx:if="{{!end_time}}">
+                请点击选择派件结束预估时间
+            </text>
+            <text class="place-text" wx:else="">
+                {{end_time}}
+            </text>
+        </picker>
+    </wxc-flex>
+    <view class="mybutton" catch:tap="newBus">确认发车</view>
+</view>
+<wxc-popup class="J_Popup" animation-mode="bottom" align="bottom" _pid="{{_pid}}">
+    <view class="popup__content">
+        <wxc-select items="{{startSites}}" color="#28a745" checked="1" bind:change="onChange" _pid="{{_pid}}"></wxc-select>
+    </view>
+</wxc-popup>

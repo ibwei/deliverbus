@@ -7,8 +7,6 @@
 
 namespace App\Http\Controllers\Api;
 
-
-use App\Models\Dorm;
 use App\Models\School;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

@@ -1,0 +1,145 @@
+<view class="container">
+    <wxc-notice notice="{{notice}}" color="#ffffff" bgColor="#19be6b" class="notice" scroll="{{true}}" show-icon="{{true}}" bind:close="onClose" close="{{true}}" _pid="{{_pid}}"></wxc-notice>
+    <view class="top">
+        <wxc-flex class="myflex" main="between" _pid="{{_pid}}">
+            <item class="f-flex" catchtap="navToDriver">
+                <wxc-icon type="arrow-left" color="#53bc64" _pid="{{_pid}}"></wxc-icon>申请老司机</item>
+            <item class="m-flex">
+                <text wx:if="{{today.currentMonth<10}}">0</text>{{today.currentMonth}}月{{today.currentDate}}日 | 周{{today.currentWeekday}} </item>
+            <item class="f-flex" catchtap="navToStartBus">去发车
+                <wxc-icon type="arrow-right" color="#53bc64" _pid="{{_pid}}"></wxc-icon>
+            </item>
+        </wxc-flex>
+    </view>
+    <view class="bus-container" wx:if="{{busList.length>0}}">
+        <view class="flex-container firstflex" wx:for="{{busList}}" wx:key="{{index}}" bind:tap="changeBottom" data-index="{{index}}">
+            <wxc-flex class="myflex bus-top" main="between" bind:change="changeBottom" data-index="{{index}}" _pid="{{_pid}}">
+                <view class="item1">
+                    <view class="start-time">
+                        {{item.start_time}}
+                    </view>
+                    <view class="start-site">
+                        {{item.start_site}}
+                    </view>
+                </view>
+                <view class="item1  mid-flex">
+                    <view class="mid1">
+                        {{item.driver_line}}
+                    </view>
+                    <view class="mid2">
+                        <image class="goto-pic" src="https://www.ibwei.com/deliverbus/images/goto.png"></image>
+                    </view>
+                    <view class="mid3">
+                        {{item.count_time}}
+                    </view>
+                </view>
+                <view class="item1">
+                    <view class="end-time">
+                        {{item.end_time}}
+                    </view>
+                    <view>
+                        {{item.end_site}}
+                    </view>
+                </view>
+                <view class="item1 price-container">
+                    <wxc-price class="myprice" value="{{item.small_price}}" _pid="{{_pid}}"></wxc-price>
+                </view>
+            </wxc-flex>
+            <wxc-flex class="bottom myflex1" wx:if="{{!item.bottomShow}}" _pid="{{_pid}}">
+                <view class="ticket_status">
+                    <text class="status">车票状态:</text>
+                    <wxc-label type-color="{{item.small_count-item.small_already_person>0?'#53bc64':'#ed3f14'}}" class="mylabel" _pid="{{_pid}}">
+                        <text wx:if="{{item.small_count-item.samll_already_person>0}}">小件:有票</text>
+                        <text wx:else="">小件:无票</text>
+                    </wxc-label>
+                    <wxc-label type-color="{{item.normall_count-item.normall_already_person>0?'#53bc64':'#ed3f14'}}" class="mylabel" _pid="{{_pid}}">
+                        <text wx:if="{{item.normall_count-item.normall_already_person>0}}">中件:有票</text>
+                        <text wx:else="">小件:无票</text>
+                    </wxc-label>
+                    <wxc-label type-color="{{item.big_count-item.big_already_person>0?'#53bc64':'#ed3f14'}}" class="mylabel" _pid="{{_pid}}">
+                        <text wx:if="{{item.big_count-item.big_already_person>0}}">大件:有票</text>
+                        <text wx:else="">大件:无票</text>
+                    </wxc-label>
+                </view>
+            </wxc-flex>
+            <wxc-flex class="bottom myflex1" main="between" wx:if="{{item.bottomShow}}" _pid="{{_pid}}">
+                <view class="item1">
+                    小件
+                </view>
+                <view class="item1">
+                    <wxc-price class="myprice1" value="{{item.small_price}}" _pid="{{_pid}}"></wxc-price>
+                </view>
+                <view class="item1">
+                    {{item.small_count-item.small_already_person}}张
+                </view>
+                <view class="item1">
+                    <text class="buy-button" catchtap="toBuy" data-type="1" data-index="{{index}}" data-price="{{item.small_price}}" wx:if="{{item.small_count-item.small_already_person>0}}">购票</text>
+                    <text class="buy-button1" wx:else="" catchtap="noTicket">已完</text>
+                </view>
+            </wxc-flex>
+            <wxc-flex class="bottom myflex1" main="between" wx:if="{{item.bottomShow}}" _pid="{{_pid}}">
+                <view class="item1">
+                    中件
+                </view>
+                <view class="item1">
+                    <wxc-price class="myprice1" value="{{item.small_price}}" _pid="{{_pid}}"></wxc-price>
+                </view>
+                <view class="item1">
+                    {{item.normall_count-item.normall_already_person}}张
+                </view>
+                <view class="item1">
+                    <text class="buy-button" catchtap="toBuy" data-type="2" data-index="{{index}}" data-price="{{item.normall_price}}" wx:if="{{item.normall_count - item.normall_already_person>0}}">购票</text>
+                    <text class="buy-button1" wx:else="" catchtap="noTicket">已完</text>
+                </view>
+            </wxc-flex>
+            <wxc-flex class="bottom myflex1" main="between" wx:if="{{item.bottomShow}}" _pid="{{_pid}}">
+                <view class="item1">
+                    大件
+                </view>
+                <view class="item1">
+                    <wxc-price class="myprice1" value="{{item.big_price}}" _pid="{{_pid}}"></wxc-price>
+                </view>
+                <view class="item1">
+                    {{item.big_count - item.big_already_person}}张
+                </view>
+                <view class="item1">
+                    <text class="buy-button" catchtap="toBuy" data-price="{{item.big_price}}" data-type="3" data-index="{{index}}" wx:if="{{item.big_count - item.big_already_person>0}}">购票</text>
+                    <text class="buy-button1" wx:else="" catchtap="noTicket">已完</text>
+                </view>
+            </wxc-flex>
+        </view>
+        <wxc-loadmore is-end="{{true}}" _pid="{{_pid}}"></wxc-loadmore>
+    </view>
+    <wxc-abnor type="BUS" wx:else="" _pid="{{_pid}}"></wxc-abnor>
+
+    <wxc-popup class="site-popup" animation-mode="bottom" align="bottom" _pid="{{_pid}}">
+        <view class="popup__content">
+            <picker bindchange="bindPickerChange" value="index11" range-key="title" range="{{startSites}}">
+                <view class="picker">
+                    <text class="text22" wx:if="{{startSites[index11].title}}">{{startSites[index11].title}}</text>
+                    <text class="notice-text" wx:else="">+点击选择始发站点</text>
+                </view>
+            </picker>
+        </view>
+    </wxc-popup>
+    <wxc-popup class="time-popup" animation-mode="bottom" align="bottom" _pid="{{_pid}}">
+        <view class="popup__content">
+            <picker bindchange="bindPickerChange1" range-key="time" value="index" range="{{timeInternal}}">
+                <view class="picker">
+                    <text class="text22" wx:if="{{timeInternal.time}}">{{timeInternal.time}}</text>
+                    <text class="notice-text" wx:else="">+点击选择发车时间段</text>
+                </view>
+            </picker>
+        </view>
+    </wxc-popup>
+    <view>
+        <wxc-flex main="between" cross="center" class="botton-menu" _pid="{{_pid}}">
+            <view class="bottom-bar" wx:for="{{menuList}}" wx:key="{{index}}" data-index="{{index}}" catchtap="changeSearch">
+                <view>
+                    <image class="icon" src="{{item.isSelected?item.selectedSrc:item.imageSrc}}"></image>
+                </view>
+                <text>{{item.title}}</text>
+            </view>
+        </wxc-flex>
+    </view>
+</view>

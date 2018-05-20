@@ -1,0 +1,34 @@
+<view class="main-wrapper">
+    <view class="listItem" wx:for="{{addressList}}" wx:for-index="idx" wx:key="address">
+        <view wx:if="{{item.id!=0}}">
+            <view class="content">
+                <view>
+                    <text>{{item.consignee}}，{{item.tel}}</text>
+                </view>
+                <text>{{item.schoolName}} {{item.address}}</text>
+            </view>
+            <view class="bottom">
+                <view class="left">
+                    <view wx:if="{{item.is_default==1}}">
+                        <image src="../../common/assets/tab/ic_ok.png"></image>已设为默认</view>
+                    <view wx:if="{{item.is_default==0}}" catchtap="setDefaultAddress" id="{{item.id}}" data-idx="{{idx}}">
+                        <image src="../../common/assets/tab/check.png"></image>设为默认</view>
+                </view>
+                <view class="right">
+                    <view catchtap="editAddress" id="{{idx}}">
+                        <image src="../../common/assets/tab/edit.png"></image> 编辑</view>
+                    <view catchtap="deleteAddress" id="{{item.id}}" data-idx="{{idx}}">
+                        <image src="../../common/assets/tab/delete.png"></image>删除</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="new">
+        <wxc-flex class="wrap" main="center" cross="center" _pid="{{_pid}}">
+            <view class="item">
+                <image src="../../common/assets/tab/new.png" class="image" catchtap="addAddress"></image>
+            </view>
+            <view class="item item1" catchtap="addAddress">新增地址</view>
+        </wxc-flex>
+    </view>
+</view>

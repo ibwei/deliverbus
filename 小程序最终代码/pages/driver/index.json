@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wxc-input": "../../packages/wxc-input/dist/index",
+    "wxc-list": "../../packages/wxc-list/dist/index",
+    "wxc-icon": "../../packages/wxc-icon/dist/index"
+  },
+  "navigationBarTitleText": "申请老司机"
+}

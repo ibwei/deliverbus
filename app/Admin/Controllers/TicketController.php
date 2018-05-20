@@ -53,14 +53,21 @@ class TicketController extends Controller
 
             $grid->id('ID')->sortable();
             $grid->column('bus_id', 'busId');
-            $grid->column('user_id', '用户id');
+            $grid->getUser()->nickname('用户名');
+            $grid->getAddress()->address('收货地址');
             $grid->column('type', '类型')
                 ->select(Ticket::getTypeDispayMap());
             $grid->column('price', '票价');
             $grid->column('status', '状态')
                 ->select(Ticket::getStateDispayMap());
+            $grid->column('deliver_number', '取货码');
+            $grid->column('express_name', '快递公司');
+            $grid->column('consignee_name', '取货人姓名');
+            $grid->column('consignee_tel', '取货人电话');
+            $grid->column('memo', '备注');
             $grid->column('trade_sn', '平台订单号');
             $grid->column('pay_sn', '微信交易号');
+            $grid->column('pay_date', '支付时间');
             $grid->created_at();
             $grid->updated_at();
         });
@@ -74,6 +81,7 @@ class TicketController extends Controller
             $form->display('id', 'ID');
             $form->text('bus_id', 'busId');
             $form->text('user_id', '用户id');
+            $form->text('address_id', '用户收货地址id');
             $form->radio('type', '类型')
                 ->options(Ticket::getTypeDispayMap())
                 ->default(Ticket::STATE_SMALL);
@@ -82,8 +90,14 @@ class TicketController extends Controller
             $form->radio('status', '状态')
                 ->options(Ticket::getStateDispayMap())
                 ->default(Ticket::STATE_WAIT);
+            $form->text('deliver_number', '取货码');
+            $form->text('express_name', '快递公司');
+            $form->text('consignee_name', '取货人姓名');
+            $form->text('consignee_tel', '取货人电话');
+            $form->text('memo', '备注');
             $form->text('trade_sn', '平台订单号');
             $form->text('pay_sn', '微信交易号');
+            $form->datetime('pay_date','支付时间');
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
         });

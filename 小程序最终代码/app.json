@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/addAddress/index",
+    "pages/address/index",
+    "pages/bus/index",
+    "pages/busDetail/index",
+    "pages/coupon/index",
+    "pages/driver/index",
+    "pages/message/index",
+    "pages/mine/index",
+    "pages/myticket/index",
+    "pages/newbus/index",
+    "pages/order/index",
+    "pages/passenger/index",
+    "pages/pay/index",
+    "pages/tel/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#efefef",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "校园快递BUS",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#53bc64",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "common/assets/tab/bus.png",
+        "selectedIconPath": "common/assets/tab/bus_selected.png",
+        "text": "BUS"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "common/assets/tab/user.png",
+        "selectedIconPath": "common/assets/tab/user_selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000
+  }
+}

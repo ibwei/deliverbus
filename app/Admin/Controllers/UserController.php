@@ -88,7 +88,8 @@ class UserController extends Controller
                 ->options(Users::getGender())
                 ->default(Users::STATE_FEMALE);
             $form->image('avatar','用户头像');
-            $form->mobile('tel','手机')->placeholder('请输入用户手机号');
+            // $form->mobile('tel','手机')->placeholder('请输入用户手机号');
+            $form->text('tel', '手机号');
             $form->text('description', '用户个人介绍');
             $form->number('point','用户个人积分');
             $form->display('created_at', 'Created At');

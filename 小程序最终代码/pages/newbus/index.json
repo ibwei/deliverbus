@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "wxc-input": "../../packages/wxc-input/dist/index",
+    "wxc-popup": "../../packages/wxc-popup/dist/index",
+    "wxc-select": "../../packages/wxc-select/dist/index",
+    "wxc-button": "../../packages/wxc-button/dist/index",
+    "wxc-icon": "../../packages/wxc-icon/dist/index",
+    "wxc-notice": "../../packages/wxc-notice/dist/index",
+    "wxc-flex": "../../packages/wxc-flex/dist/index"
+  },
+  "navigationBarTitleText": "我要发车"
+}

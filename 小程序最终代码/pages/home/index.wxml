@@ -1,0 +1,69 @@
+<view class="search-wrap">
+    <wxc-search class="search" show-icon="{{true}}" bg-color="#fff" placeholder="请在此输入你的学校" bind:input="serachSchool" catch:submit="hidePopup" bindmyblur="hidePopup" bindmyfocus="showPopup" showClear="{{true}}" _pid="{{_pid}}"></wxc-search>
+</view>
+<view class="home-container" style="background-image:url('https://www.ibwei.com/deliverbus/images/school.png')">
+    <wxc-cc class="mypanel" _pid="{{_pid}}">
+        <view class="school-banner">
+            <wxc-icon type="location" size="30" color="#fff" _pid="{{_pid}}"></wxc-icon>
+            <text wx:if="{{currentSchool}}">{{currentSchool.title}}</text>
+            <text wx:else="" catch:tap="showPopup">点击选择学校</text>
+        </view>
+    </wxc-cc>
+</view>
+<view class="flex-container">
+    <wxc-flex class="myflex" main="between" _pid="{{_pid}}">
+        <view class="item item1">
+            <view>
+                <text class="text1">哪里上车</text>
+            </view>
+            <view>
+                <view class="section" catchtap="noSchool">
+                    <picker bindchange="bindPickerChange" range-key="title" value="index" range="{{startSites}}" disabled="{{startSites.length?false:true}}">
+                        <view class="picker">
+                            <text class="text22" wx:if="{{startSites[index].title}}">{{startSites[index].title}}</text>
+                            <text class="notice-text" wx:else="">请选择</text>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <view class="item mid-flex">
+            <image class="mypic" src="https://www.ibwei.com/deliverbus/images/deliver.png"></image>
+        </view>
+        <view class="item item1">
+            <view>
+                <text class="text1">哪里下车</text>
+            </view>
+            <view>
+                <input type="text" placeholder-style="font-weight:400;font-size:16px;color:#e3e3e3" placeholder="选填" class="end-input text22" maxlength="4" bindinput="saveEndSite"></input>
+            </view>
+        </view>
+    </wxc-flex>
+    <wxc-flex class="myflex" main="between" _pid="{{_pid}}">
+        <view>
+            <text class="text22">{{today.currentMonth}}月{{today.currentDate}}日</text>
+            <text class="text1" style="margin-left:20rpx;">今日上车</text>
+        </view>
+    </wxc-flex>
+    <wxc-flex main="between" class="myflex" _pid="{{_pid}}">
+        <view class="mybutton" catchtap="navToBus">查询快递BUS</view>
+    </wxc-flex>
+</view>
+<wxc-cc class="mypanel" _pid="{{_pid}}">
+    <navigator url="/pages/home/index">
+        <image class="banner" mode="widthFix" src="https://www.ibwei.com/deliverbus/images/three.png"></image>
+    </navigator>
+</wxc-cc>
+<view class="school-popup">
+    <swipte sroll-y="true">
+        <wxc-popup class="school-popup" animation-mode="top" align="top" _pid="{{_pid}}">
+            <view class="popup__content">
+                <wxc-select items="{{schoolList}}" color="@brandColor" bind:change="chooseSchool" wx:if="{{schoolList.length>0}}" _pid="{{_pid}}"></wxc-select>
+                <wxc-abnor wx:else type="SCHOOL" _pid="{{_pid}}"></wxc-abnor>
+            </view>
+        </wxc-popup>
+
+    </swipte>
+</view>
+<wxc-toast duration="2000" icon="warning" icon-color="#ed3f14" class="J_toast" text="请检查你的网络">
+</wxc-toast>
