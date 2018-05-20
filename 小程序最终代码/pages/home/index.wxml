@@ -59,7 +59,7 @@
         <wxc-popup class="school-popup" animation-mode="top" align="top" _pid="{{_pid}}">
             <view class="popup__content">
                 <wxc-select items="{{schoolList}}" color="@brandColor" bind:change="chooseSchool" wx:if="{{schoolList.length>0}}" _pid="{{_pid}}"></wxc-select>
-                <wxc-abnor wx:else type="SCHOOL" _pid="{{_pid}}"></wxc-abnor>
+                <wxc-abnor wx:else="" type="SCHOOL" _pid="{{_pid}}"></wxc-abnor>
             </view>
         </wxc-popup>
 

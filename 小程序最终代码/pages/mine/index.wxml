@@ -35,7 +35,7 @@
 </view>
 <view class="list-wrap">
     <view class="list-item">
-        <wxc-list catchtap="navToMine" wx:for="{{busList}}" wx:key="index" class="item" title="{{item.title}}" desc="{{item.slot? '' : item.desc}}" mode="{{index == busList.length-1 ? 'none': ''}}" src="{{item.src}}" data-index="{{index}}" _pid="{{_pid}}">
+        <wxc-list catchtap="navToDriver" wx:for="{{busList}}" wx:key="index" class="item" title="{{item.title}}" desc="{{item.slot? '' : item.desc}}" mode="{{index == busList.length-1 ? 'none': ''}}" src="{{item.src}}" data-index="{{index}}" _pid="{{_pid}}">
             <view wx:if="{{item.slot && item.desc}}" class="desc-highlight">{{item.desc}}</view>
         </wxc-list>
     </view>

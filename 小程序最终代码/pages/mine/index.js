@@ -116,16 +116,6 @@ export default Page({
 		}
 		//console.log(e.currentTarget.dataset.index)
 		let index = e.currentTarget.dataset.index;
-		if (index == 1 || index == 0) {
-			if (!this.data.isDriver) {
-				wx.showToast({
-					title: '您还不是老司机',
-					icon: 'none',
-					duration: 1500
-				});
-				return false;
-			}
-		}
 		let navUrl = this.data.userList[index].navUrl;
 		wx.navigateTo({
 			url: navUrl
@@ -140,29 +130,30 @@ export default Page({
 			});
 			return false;
 		}
-		if (!this.data.isDriver) {
-			wx.showToast({
-				title: '您不是老司机',
-				icon: 'none',
-				duration: 2000
-			});
-			return false;
-		}
-		wx.navigateTo({
-			url: '/pages/driver/index'
-		});
-	},
-	navToMine(e) {
-		if (!this.data.isLogin) {
-			wx.showToast({
-				title: '请先登录',
-				icon: 'none',
-				duration: 2000
-			});
-			return false;
-		}
 		let index = e.currentTarget.dataset.index;
+		console.log(index);
+		if (index == 0 || index == 1) {
+			if (!this.data.isDriver) {
+				wx.showToast({
+					title: '您还不是老司机或处于申请中',
+					icon: 'none',
+					duration: 1500
+				});
+				return false;
+			}
+		}
+		if (index == 2) {
+			if (this.data.isDriver) {
+				wx.showToast({
+					title: '您已经是老司机了',
+					icon: 'none',
+					duration: 1500
+				});
+				return false;
+			}
+		}
 		let navUrl = this.data.busList[index].navUrl;
+
 		wx.navigateTo({
 			url: navUrl
 		});
