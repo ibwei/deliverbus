@@ -1,4 +1,0 @@
-<view class="badge badge__type--{{type}} badge__system--{{_system_}}">
-    <slot wx:if="{{!value && type !== 'dot'}}"></slot>
-    {{value && type !== 'dot' ? value : ''}}
-</view>

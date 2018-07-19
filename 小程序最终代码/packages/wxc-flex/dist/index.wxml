@@ -1,3 +1,0 @@
-<view class="flex dir--{{dir}} main--{{main}} cross--{{cross}} wrap--{{wrap}}" bind:tap="onClick" bubbles="true" composed="true">
-    <slot></slot>
-</view>

@@ -19,6 +19,7 @@ Route::namespace('Api')->group(function () {
     //用户登录模块
     Route::post('/user/register', 'LoginController@register');
     Route::post('/user/login', 'LoginController@login')->name('login');
+    Route::post('/line/searchLine', 'LineController@index');
 
 
 

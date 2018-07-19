@@ -1,3 +1,0 @@
-<wxc-flex class="cc" main="center" cross="center" _pid="{{_pid}}">
-    <slot></slot>
-</wxc-flex>

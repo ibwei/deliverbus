@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "wxc-abnor": "../../packages/wxc-abnor/dist/index"
-  },
-  "navigationBarTitleText": "我的优惠券"
-}

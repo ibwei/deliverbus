@@ -1,8 +1,0 @@
-<view>
-    <textarea class="div_class" placeholder="必填项,请输入你想反馈给我们的信息" bindinput="saveMessage" value="{{message}}"></textarea>
-</view>
-<view class="confirm-button" bindtap="sendFeedback">提交反馈</view>
-<wxc-toast duration="2000" icon="warning" icon-color="#ed3f14" class="J_toast" text="该功能暂未启用" _pid="{{_pid}}">
-</wxc-toast>
-<wxc-toast duration="1000" icon="yes" icon-color="#19be6b" class="login_toast" text="发表成功" _pid="{{_pid}}">
-</wxc-toast>

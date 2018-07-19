@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "wxc-badge": "../../wxc-badge/dist/index",
-    "wxc-cc": "../../wxc-cc/dist/index"
-  },
-  "component": true
-}
