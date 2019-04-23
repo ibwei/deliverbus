@@ -23,6 +23,8 @@ class TicketController extends ApiController
 
     use AuthenticatesUsers;
 
+
+
     public function pay(Request $request)
     {
         //验证
@@ -47,14 +49,57 @@ class TicketController extends ApiController
         }
     }
 
+
+    public function saveFormId(Request $request)
+    {
+        $res = DB::table('formid')->insert(
+            ['user_id' => $request->user_id, 'form_id' => $request->form_id]
+        );
+        if ($res) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     public function payok(Request $request)
     {
+        $config = config('wechat.mini_program.default');
+        $app = Factory::miniProgram($config);
         $ticket = new Ticket;
         $trade_sn = $request->trade_sn;
         $ticket->trade_sn = $trade_sn;
         $result = \App\Models\Ticket::where('trade_sn', $trade_sn)
             ->update(['status' => 2]);
+
         if ($result) {
+            $result = \App\Models\Ticket::where('trade_sn', $trade_sn)
+                ->update(['status' => 2]);
+
+            $r = DB::table('ticket')
+                ->join('users', 'users.id', '=', 'ticket.user_id')
+                ->join('bus', 'bus.id', '=', 'ticket.bus_id')
+                ->join('addresses', 'addresses.id', '=', 'ticket.address_id')
+                ->select('openid', 'ticket.price AS price', 'bus.driver_line AS driver_line', 'bus.end_time AS end_time', 'bus.start_time AS start_time', 'addresses.address AS address')
+                ->where([
+                    ['trade_sn', '=', $trade_sn]
+                ])->get();
+
+            //发送模板消息
+            $app->template_message->send([
+                'touser' => $r[0]->openid,
+                'template_id' => 'caj3DZ8ycs0IjIbOZ7HX6Lj1fWXMISoCHE-yuMd4t60',
+                'page' => '/pages/myticket/index',
+                'form_id' => $request->formId,
+                'data' => [
+                    'keyword1' => $r[0]->price,
+                    'keyword2' => '代领服务',
+                    'keyword3' => $r[0]->driver_line,
+                    'keyword4' => $r[0]->start_time,
+                    'keyword5' => $r[0]->end_time,
+                    'keyword6' => $r[0]->address
+                ],
+            ]);
             return 1;
         } else {
             return 0;
@@ -69,12 +114,13 @@ class TicketController extends ApiController
             ->join('schools', 'schools.id', '=', 'bus.school_id')
             ->join('sites', 'sites.id', '=', 'bus.site_id')
             ->join('addresses', 'addresses.id', '=', 'ticket.address_id')
-            ->select('ticket.id as id', 'ticket.price', 'ticket.trade_sn','ticket.type', 'ticket.deliver_number', 'ticket.express_name', 'consignee_name', 'ticket.status', 'ticket.received', 'driver_line', 'sites.name AS start_site', 'end_site', 'start_time', 'end_time','bus.status')
+            ->join('drivers', 'drivers.id', '=', 'bus.driver_id')
+            ->select('ticket.id as id', 'ticket.price', 'ticket.trade_sn', 'ticket.type', 'ticket.deliver_number', 'ticket.express_name', 'consignee_name', 'ticket.status', 'ticket.received', 'driver_line', 'sites.name AS start_site', 'end_site', 'start_time', 'end_time', 'bus.status', 'drivers.name', 'drivers.tel')
             ->where([
                 ['ticket.user_id', '=', $user_id],
                 ['ticket.status', '=', 2]
             ])
-            ->orderBy('trade_sn','desc')
+            ->orderBy('trade_sn', 'desc')
             ->get();
         return json_encode($busList);
     }
@@ -94,6 +140,3 @@ class TicketController extends ApiController
         }
     }
 }
-
-
-

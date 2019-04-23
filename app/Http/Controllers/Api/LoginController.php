@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 use Validator;
 use EasyWeChat\Factory;
 use Ucpaas;
+use function GuzzleHttp\json_encode;
+
 class LoginController extends ApiController
 {
 
@@ -50,8 +52,8 @@ class LoginController extends ApiController
      */
     public function login(Request $request)
     {
+
         // 获取openid
-        //return $request->userInfo['nickName'];
         if ($request->code) {
             $wx_info = $this->easyWechatGetSession($request->code);
         }
@@ -84,20 +86,20 @@ class LoginController extends ApiController
         //进行基本验证
         $newUser = [
             'openid' => $openid, //openid
-            'nickname' => $request->userInfo['nickName'],// 昵称
-            'avatar' => $request->userInfo['avatarUrl'], //头像
+            'nickname' => $request->nickName, // 昵称
+            'avatar' => $request->avatarUrl, //头像
             'unionid' => '', // unionid (可空)
             'login_ip' => $this->getClientIP(),
-            'gender'=>$request->userInfo['gender'],
-            'point'=>0,
-            'description'=>'太懒了,什么也没写',
+            'gender' => $request->gender,
+            'point' => 0,
+            'description' => '太懒了,什么也没写',
             'login_time' => Carbon::now()
         ];
         $n_user = User::create($newUser);
         $uid = $n_user->id;
         // 直接创建token
         $token = $n_user->createToken($openid)->accessToken;
-        $isDriver=false;
+        $isDriver = false;
         return $this->success(compact('token', 'uid'));
     }
     //返回登录状态
@@ -119,7 +121,6 @@ class LoginController extends ApiController
 
         if ($a1->mobile) {
             return $para1->unionId;
-
         }
         return 0;
     }
@@ -139,7 +140,7 @@ class LoginController extends ApiController
                 $result = DB::table('users')
                     ->where('id', $id)
                     ->update(['mobile' => $mobile]);
-                if ($result) {  
+                if ($result) {
                     $data1 = ["status" => 1, "msg" => "已绑定", "uid" => $id];
                     Cache::forget('code');
                     return json_encode($data1);
@@ -196,6 +197,3 @@ class LoginController extends ApiController
         return $output;
     }
 }
-
-
-
