@@ -1,0 +1,161 @@
+[2019-04-14 16:42:31] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=20_uYXFGUYD4omJRoXuacZIy8ASgqvqmQ_zwQ-0usEWn-z4IWA_khl4xfou8n1mFQj4mqkT3Ffv3J_6vy4ZGCF8z-l2QNsqYYXRygxUcgPiLib0-ba245BqQ9ESeL2y2O4oQ8SADOM_nPxc8WyHJCPhAHACVI&appid=wxeb5d40ea927d8abc&secret=2e7f2fa0b593ffb38002bc9accf8d0df&js_code=011L4pK61IM6hL1iocL61MKeK61L4pKy&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Sun, 14 Apr 2019 08:42:32 GMT
+Content-Length: 83
+
+{"session_key":"+LtQPXYIPHk99r\/zQo67Ng==","openid":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM"}
+--------
+NULL  
+[2019-04-14 16:45:32] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=20_uYXFGUYD4omJRoXuacZIy8ASgqvqmQ_zwQ-0usEWn-z4IWA_khl4xfou8n1mFQj4mqkT3Ffv3J_6vy4ZGCF8z-l2QNsqYYXRygxUcgPiLib0-ba245BqQ9ESeL2y2O4oQ8SADOM_nPxc8WyHJCPhAHACVI&appid=wxeb5d40ea927d8abc&secret=2e7f2fa0b593ffb38002bc9accf8d0df&js_code=001a7RxA0633nh26F9zA0IN7yA0a7Rxg&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Sun, 14 Apr 2019 08:45:33 GMT
+Content-Length: 82
+
+{"session_key":"1kRbxUQCvfwuSVQBEdX6ig==","openid":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM"}
+--------
+NULL  
+[2019-04-14 17:14:51] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=20_uYXFGUYD4omJRoXuacZIy8ASgqvqmQ_zwQ-0usEWn-z4IWA_khl4xfou8n1mFQj4mqkT3Ffv3J_6vy4ZGCF8z-l2QNsqYYXRygxUcgPiLib0-ba245BqQ9ESeL2y2O4oQ8SADOM_nPxc8WyHJCPhAHACVI&appid=wxeb5d40ea927d8abc&secret=2e7f2fa0b593ffb38002bc9accf8d0df&js_code=081O5zSf16aNpr0UChTf1ZJmSf1O5zSb&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Sun, 14 Apr 2019 09:14:52 GMT
+Content-Length: 82
+
+{"session_key":"ZIvMwuHnv4VYpkmbSdMwMA==","openid":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM"}
+--------
+NULL  
+[2019-04-14 17:40:03] NULL.NOTICE: >>>>>>>>
+GET /sns/jscode2session?access_token=20_uYXFGUYD4omJRoXuacZIy8ASgqvqmQ_zwQ-0usEWn-z4IWA_khl4xfou8n1mFQj4mqkT3Ffv3J_6vy4ZGCF8z-l2QNsqYYXRygxUcgPiLib0-ba245BqQ9ESeL2y2O4oQ8SADOM_nPxc8WyHJCPhAHACVI&appid=wxeb5d40ea927d8abc&secret=2e7f2fa0b593ffb38002bc9accf8d0df&js_code=081aHs1a2D5rvM0qnVZ92SHM1a2aHs1D&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+
+
+<<<<<<<<
+
+--------
+cURL error 28: Resolving timed out after 5516 milliseconds (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)  
+[2019-04-14 17:42:25] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=20_uYXFGUYD4omJRoXuacZIy8ASgqvqmQ_zwQ-0usEWn-z4IWA_khl4xfou8n1mFQj4mqkT3Ffv3J_6vy4ZGCF8z-l2QNsqYYXRygxUcgPiLib0-ba245BqQ9ESeL2y2O4oQ8SADOM_nPxc8WyHJCPhAHACVI&appid=wxeb5d40ea927d8abc&secret=2e7f2fa0b593ffb38002bc9accf8d0df&js_code=0618kTZO0XzUy32wnM0P0rRTZO08kTZs&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Sun, 14 Apr 2019 09:42:26 GMT
+Content-Length: 82
+
+{"session_key":"fjbJFwBbQQtxyiDOFXUUHA==","openid":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM"}
+--------
+NULL  
+[2019-04-14 22:07:04] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=20_3wgY4TeLXMtkh6KQn1VAp4cjqu40PjPpQkLV6jphGZC_0flqR_9dQJ7SyclHY5vVsXv8QGm57ls-Z9WyPE-x0Q4rcILipk_pe7A5_xfBiScjS65dsWjhkZoNSHtgrbT1UcP0peaQ20FMS2F6ZLMbAJASEF&appid=wxeb5d40ea927d8abc&secret=2e7f2fa0b593ffb38002bc9accf8d0df&js_code=0715E6ja0YByfz1JrUka04Krja05E6je&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Sun, 14 Apr 2019 14:07:05 GMT
+Content-Length: 83
+
+{"session_key":"SQv\/UzdzA2UuGyMPbs2X3Q==","openid":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM"}
+--------
+NULL  
+[2019-04-14 22:07:41] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=20_3wgY4TeLXMtkh6KQn1VAp4cjqu40PjPpQkLV6jphGZC_0flqR_9dQJ7SyclHY5vVsXv8QGm57ls-Z9WyPE-x0Q4rcILipk_pe7A5_xfBiScjS65dsWjhkZoNSHtgrbT1UcP0peaQ20FMS2F6ZLMbAJASEF&appid=wxeb5d40ea927d8abc&secret=2e7f2fa0b593ffb38002bc9accf8d0df&js_code=011LdpKo055Rrl1LuEKo04FBKo0LdpK0&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Sun, 14 Apr 2019 14:07:42 GMT
+Content-Length: 82
+
+{"session_key":"qjR2lxF3vjg6XMiuQqBEVA==","openid":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM"}
+--------
+NULL  
+[2019-04-14 22:59:03] NULL.INFO: >>>>>>>>
+POST /cgi-bin/message/wxopen/template/send?access_token=20_3wgY4TeLXMtkh6KQn1VAp4cjqu40PjPpQkLV6jphGZC_0flqR_9dQJ7SyclHY5vVsXv8QGm57ls-Z9WyPE-x0Q4rcILipk_pe7A5_xfBiScjS65dsWjhkZoNSHtgrbT1UcP0peaQ20FMS2F6ZLMbAJASEF HTTP/1.1
+Host: api.weixin.qq.com
+Content-Length: 340
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+Content-Type: application/json
+
+{"touser":[{"openid":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM"}],"template_id":"6qf01Ip5oDP02IQp5BXNM6SanLjRES4Rvufw4tYkSgE","page":"\/pages\/myticket\/index","form_id":"2019041414252","data":{"keyword1":{"value":"2019041414252"},"keyword2":{"value":"代领快递"},"keyword3":{"value":"12"},"keyword4":{"value":"微信支付"}},"emphasis_keyword":""}
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Sun, 14 Apr 2019 14:59:04 GMT
+Content-Length: 66
+
+{"errcode":40003,"errmsg":"invalid openid hint: [QWDSba09448641]"}
+--------
+NULL  
+[2019-04-14 23:12:01] NULL.INFO: >>>>>>>>
+POST /cgi-bin/message/wxopen/template/send?access_token=20_3wgY4TeLXMtkh6KQn1VAp4cjqu40PjPpQkLV6jphGZC_0flqR_9dQJ7SyclHY5vVsXv8QGm57ls-Z9WyPE-x0Q4rcILipk_pe7A5_xfBiScjS65dsWjhkZoNSHtgrbT1UcP0peaQ20FMS2F6ZLMbAJASEF HTTP/1.1
+Host: api.weixin.qq.com
+Content-Length: 327
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+Content-Type: application/json
+
+{"touser":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM","template_id":"6qf01Ip5oDP02IQp5BXNM6SanLjRES4Rvufw4tYkSgE","page":"\/pages\/myticket\/index","form_id":"2019041431994","data":{"keyword1":{"value":"2019041431994"},"keyword2":{"value":"代领快递"},"keyword3":{"value":"12"},"keyword4":{"value":"微信支付"}},"emphasis_keyword":""}
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Date: Sun, 14 Apr 2019 15:12:02 GMT
+Content-Type: application/json; encoding=utf-8
+Content-Length: 110
+
+{"errcode":40001,"errmsg":"invalid credential, access_token is invalid or not latest hint: [XVgRPA07224682!]"}
+--------
+NULL  
+[2019-04-14 23:12:02] NULL.DEBUG: Retrying with refreshed access token.  
+[2019-04-14 23:12:03] NULL.INFO: >>>>>>>>
+POST /cgi-bin/message/wxopen/template/send?access_token=20_4YepwDimRfvhI9R6sSYZ_KQVQtQZsITvaYLcw2lQUaEC2vAvSz0dzGnx7DhSNnOmbU-MKC88czWT5Po8RhP_lXnNbE-0L8NQWGgub1OoG0QQMIFM7PeD-y9EGDsIWEeACANBJ HTTP/1.1
+Host: api.weixin.qq.com
+Content-Length: 327
+User-Agent: GuzzleHttp/6.3.3 curl/7.50.3 PHP/7.0.12
+Content-Type: application/json
+
+{"touser":"osoRJ5BgbJB-5mUNnxsi1UxI1IaM","template_id":"6qf01Ip5oDP02IQp5BXNM6SanLjRES4Rvufw4tYkSgE","page":"\/pages\/myticket\/index","form_id":"2019041431994","data":{"keyword1":{"value":"2019041431994"},"keyword2":{"value":"代领快递"},"keyword3":{"value":"12"},"keyword4":{"value":"微信支付"}},"emphasis_keyword":""}
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Sun, 14 Apr 2019 15:12:04 GMT
+Content-Length: 71
+
+{"errcode":40037,"errmsg":"invalid template_id hint: [QUMQga07244100]"}
+--------
+NULL  

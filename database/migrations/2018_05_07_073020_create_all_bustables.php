@@ -37,6 +37,7 @@ class CreateAllBustables  extends Migration
             $table->integer('user_id')->nullable(false)->default(0)->comment('用户ID(关联用户表)');
             $table->string('consignee', 10)->nullable(false)->default('')->comment('收货人姓名');
             $table->string('tel', 13)->nullable(false)->default('')->comment('收货人电话号码');
+            $table->integer('school_id')->nullable(false)->default(0)->comment('学校ID');
             $table->string('address', 255)->nullable(false)->default('')->comment('具体的宿舍楼栋号');
             $table->tinyInteger('is_default')->default(0)->comment('是否是默认收获地址');
             $table->tinyInteger('deleted')->default(0)->comment("软删除标记");
@@ -80,8 +81,9 @@ class CreateAllBustables  extends Migration
             $table->increments('id');
             $table->integer('driver_id')->nullable(false)->comment('关联老司机id');
             $table->integer('school_id')->nullable(false)->comment('关联所在学校id');
+            $table->string('driver_line')->nullable(false)->comment('发车专线');
             $table->integer('site_id')->nullable(false)->comment('关联所在学校的站点id(即起点)');
-            $table->integer('address_id')->nullable(false)->comment('用户收获地址的id');
+            $table->string('end_site')->nullable(false)->comment('终点');
             $table->float('price')->nullable(false)->default(1.00)->comment('票价');
             $table->string('note',100)->nullable(false)->comment('备注(大件补差价等信息在此备注)');
             $table->tinyInteger('status')->default(0)->comment('任务状态,0:未发车,1:发车中,2:已到站,3:全部确认');

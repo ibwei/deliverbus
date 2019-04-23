@@ -5,17 +5,17 @@ return [
     /*
      * Laravel-admin name.
      */
-    'name' => '卖纸屋',
+    'name' => '校园快递bus',
 
     /*
      * Logo in admin panel header.
      */
-    'logo' => '<b>卖纸屋</b> admin',
+    'logo' => '<b>快递Bus</b> admin',
 
     /*
      * Mini-logo in admin panel header.
      */
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>B</b>',
 
     /*
      * Route configuration.
@@ -37,7 +37,7 @@ return [
     /*
      * Laravel-admin html title.
      */
-    'title' => 'Admin',
+    'title' => '校园快递bus后台管理系统',
 
     /*
      * Use `https`.
@@ -130,7 +130,7 @@ return [
     /*
      * @see https://adminlte.io/docs/2.4/layout
      */
-    'skin' => 'skin-blue-light',
+    'skin' => 'skin-white-light',
 
     /*
     |---------------------------------------------------------|
@@ -141,7 +141,7 @@ return [
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
      */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['sidebar-mini'],
 
     /*
      * Version displayed in footer.
