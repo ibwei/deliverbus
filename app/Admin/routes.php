@@ -10,15 +10,21 @@ Route::group([
     'middleware'    => config('admin.route.middleware'),
 ], function (Router $router) {
     $router->get('/', 'HomeController@index');
-
-    //商品管理
-    $router->resource('goods', GoodsController::class);
-    //用户表管理
+    //用户
     $router->resource('user', UserController::class);
     //收货地址表管理
     $router->resource('addresses', AddressesController::class);
-    //积分商品表管理
-    $router->resource('point_good', Point_GoodsController::class);
-
+    //学校
+    $router->resource('school', SchoolController::class);
+    //站点
+    $router->resource('site', SiteController::class);
+    //司机
+    $router->resource('driver', DriverController::class);
+    //bus
+    $router->resource('bus', BusController::class);
+    //车票
+    $router->resource('ticket', TicketController::class);
+    //反馈
+    $router->resource('feelback', FeelbackController::class);
 
 });
