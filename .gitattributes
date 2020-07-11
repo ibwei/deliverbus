@@ -1,5 +1,3 @@
-* text=auto
-CHANGELOG.md export-ignore
 *.php linguist-language=PHP
 *.js linguist-language=PHP
 *.env linguist-language=PHP
